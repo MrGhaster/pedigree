@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import ModalContainer from "@/components/parts/ModalContainer";
+import ModalContainer from "@/components/parts/ModalContainer"
 
 export default {
   components: {
@@ -126,7 +126,7 @@ h4 {
     font-weight: 700;
   }
 
-  &__date {
+  &__grey-txt {
     color: #757575;
     font-weight: 700;
   }
@@ -142,7 +142,7 @@ h4 {
     grid-column: span 2;
     font-weight: 500;
     font-size: 14px;
-    min-height: 200px !important;
+    min-height: 100px !important;
     overflow: hidden;
   }
 }

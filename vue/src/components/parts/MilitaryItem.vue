@@ -3,7 +3,7 @@
     <div class="custom-card__header">
       {{ military.rank }}
     </div>
-    <div class="custom-card__date">
+    <div class="custom-card__grey-txt">
       {{ military.startDate }}<template v-if="military.endDate"> - {{ military.endDate }}</template>
     </div>
     <div class="custom-card__type">{{ military.type }}</div>

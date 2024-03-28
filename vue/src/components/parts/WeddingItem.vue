@@ -3,7 +3,7 @@
     <div class="custom-card__header">
       {{ fullName }} 
     </div>
-    <div class="custom-card__date">
+    <div class="custom-card__grey-txt">
       {{ wedding.startDate }}<template v-if="wedding.endDate"> - {{ wedding.endDate }}</template>
     </div>
   </div>
