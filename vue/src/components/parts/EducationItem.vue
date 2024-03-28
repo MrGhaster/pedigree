@@ -1,22 +1,20 @@
 <template>
-  <div class="education-card">
-    <div class="education-card__header">
-      <h2 class="education-card__institution">{{ education.name }}</h2>
-      <div class="education-card__dates">
-        {{ formatDate(education.startDate) }} - {{ education.endDate ? formatDate(education.endDate) : 'настоящее время' }}
-      </div>
+  <div class="custom-card">
+    <div class="custom-card__header">
+      {{ education.name }}
     </div>
-
-    <div class="education-card__body">
-      <div class="education-card__detail">
-        <span class="education-card__detail-label">Тип:</span> {{ education.type }}
-      </div>
-      <div class="education-card__detail">
-        <span class="education-card__detail-label">Уровень образования:</span> {{ education.level }}
-      </div>
-      <div class="education-card__detail">
-        <span class="education-card__detail-label">Город:</span> {{ education.city }}
-      </div>
+    <div class="custom-card__grey-txt">
+      {{ formatDate(education.startDate) }} - {{ education.endDate ? formatDate(education.endDate) : 'настоящее время' }}
+    </div>
+    
+    <div class="custom-card__type">
+      Тип:<span class="custom-card__grey-txt"> {{ education.type }} </span>
+    </div>
+    <div class="custom-card__type">
+      Уровень образования:<span class="custom-card__grey-txt"> {{ education.level }} </span> 
+    </div>
+    <div class="custom-card__type">
+      Город:<span class="custom-card__grey-txt"> {{ education.city }} </span> 
     </div>
   </div>
 </template>
@@ -38,51 +36,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="less">
-@base-color: #333;
-@light-color: #666;
-@background-color: #fff;
-@font-family: 'Inter', sans-serif;
-
-.education-card {
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px;
-  background-color: @background-color;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  padding: 15px;
-  font-family: @font-family;
-
-  &__header {
-    margin-bottom: 15px;
-  }
-
-  &__institution {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-  }
-
-  &__dates {
-    font-size: 14px;
-    color: @light-color;
-  }
-
-  &__body {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  &__detail {
-    font-size: 16px;
-    color: @base-color;
-  }
-
-  &__detail-label {
-    font-weight: 600;
-  }
-}
-</style>
