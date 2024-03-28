@@ -47,7 +47,7 @@
       </div>
 
       <h2 id="education-section">Образование</h2>
-      <div v-if="person.educations" class="custom-list">
+      <div v-if="person.educations" class="custom-grid">
         <EducationItem 
           v-for="(education, index) in person.educations" 
           :key="index" 
@@ -59,7 +59,7 @@
       </div>
 
       <h2 id="weddings-section">Брачные союзы</h2>
-      <div v-if="person.weddings" class="custom-list">
+      <div v-if="person.weddings" class="custom-grid">
         <WeddingItem 
           v-for="(wedding, index) in person.weddings" 
           :key="index" 
@@ -71,7 +71,7 @@
       </div>
 
       <h2 id="military-section">Военная служба</h2>
-      <div v-if="person.militaries" class="custom-list">
+      <div v-if="person.militaries" class="custom-grid">
         <MilitaryItem
           v-for="(military, index) in person.militaries"
           :key="index"
