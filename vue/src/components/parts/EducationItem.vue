@@ -1,5 +1,5 @@
 <template>
-  <div class="education-card">
+  <div class="education-card" :id="educationId">
     <div class="education-card__header">
       <h2 class="education-card__institution">{{ education.name }}</h2>
       <div class="education-card__dates">
@@ -29,6 +29,11 @@ export default {
     education: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    educationId () {
+      return `education-${this.$vnode.key}`
     }
   },
   methods: {

@@ -90,11 +90,24 @@
       <div v-else class="person-card__information-text">
         Информации нет
       </div>
+
+      <h2 id="work-section">Работа</h2>
+      <div v-if="person.works && person.works.length" class="custom-grid">
+        <WorkItem
+          v-for="(work, index) in person.works"
+          :key="index"
+          :work="work"
+        />
+      </div>
+      <div v-else class="person-card__information-text">
+        Информации нет
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import WorkItem from '@/components/parts/WorkItem.vue'
 import WeddingItem from '@/components/parts/WeddingItem.vue'
 import EducationItem from '@/components/parts/EducationItem.vue'
 import MilitaryItem from '@/components/parts/MilitaryItem.vue'
@@ -109,6 +122,7 @@ import { maskDatetime, defaultImage } from '@/utils/mask'
 export default {
   name: 'PersonCard',
   components: {
+    WorkItem,
     EducationItem,
     WeddingItem,
     MilitaryItem,

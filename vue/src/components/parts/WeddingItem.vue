@@ -1,5 +1,5 @@
 <template>
-  <div class="wedding-card">
+  <div class="wedding-card" :id="weddingId">
     <div class="wedding-card__header">
       {{ fullName }}
     </div>
@@ -36,6 +36,9 @@ export default {
         return formatPersonName(this.getPartner, {short: true, access: this.needHide})
       }
       return ''
+    },
+    weddingId () {
+      return `wedding-${this.$vnode.key}`
     }
   }
 }

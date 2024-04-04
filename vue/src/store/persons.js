@@ -13,6 +13,7 @@ const initialState = [
     military: [],
     children: ['2'],
     weddings: [],
+    work: [],
     photo: require('@/assets/logo.png'),
   },
   {
