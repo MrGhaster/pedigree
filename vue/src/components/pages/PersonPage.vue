@@ -83,8 +83,8 @@ export default {
     }
   },
   mounted() {
-    const scrollingPanel = this.scrollingPanel;
-    this.addSubField(scrollingPanel);
+    const scrollingPanel = this.scrollingPanel
+    this.addSubField(scrollingPanel)
   },
   methods: {
     generateSubFieldId(sectionName, index) {
@@ -92,7 +92,7 @@ export default {
     },
     addSubField(scrollingPanel) {
       this.sections.forEach(section => {
-        const subField = this.subField[section.id];
+        const subField = this.subField[section.id]
         if (subField && subField.length > 0) {
           subField.forEach(subField => {
             scrollingPanel.addSubField(section.id, subField)

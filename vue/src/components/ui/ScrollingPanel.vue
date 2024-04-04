@@ -26,7 +26,7 @@ export default {
       }
     },
     addSubField(sectionId, subField) {
-      const section = this.sections.find(sec => sec.id === sectionId);
+      const section = this.sections.find(sec => sec.id === sectionId)
       if (section) {
         section.subField.push(subField)
       }
