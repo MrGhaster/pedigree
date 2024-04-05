@@ -1,5 +1,5 @@
 <template>
-    <div class="work-card" :id="workId">
+    <div class="work-card">
       <div class="work-card__organization">{{ work.organization }}</div>
       <div class="work-card__place">{{ work.place }}</div>
       <div class="work-card__date">{{ work.startDate }}
@@ -17,11 +17,6 @@
       work: {
         type: Object,
         required: true
-      }
-    },
-    computed: {
-      workId () {
-        return `work-${this.$vnode.key}`
       }
     }
   }

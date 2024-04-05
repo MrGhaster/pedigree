@@ -1,5 +1,5 @@
 <template>
-  <div class="military-card" :id="militaryId">
+  <div class="military-card">
     <div class="military-card__rank">
       {{ military.rank }}
     </div>
@@ -25,11 +25,6 @@ export default {
     military: {
       type: Object,
       required: true
-    }
-  },
-  computed: {
-    militaryId () {
-      return `military-${this.$vnode.key}`
     }
   }
 }
