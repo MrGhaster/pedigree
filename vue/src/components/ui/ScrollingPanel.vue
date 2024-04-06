@@ -24,12 +24,6 @@ export default {
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' })
       }
-    },
-    addSubField(sectionId, subField) {
-      const section = this.sections.find(sec => sec.id === sectionId)
-      if (section) {
-        section.subField.push(subField)
-      }
     }
   }
 }

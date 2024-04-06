@@ -122,7 +122,7 @@
           </div>
         </div>
         <ChildForm
-          :id="'child-' + index"
+          :id="'childs-' + index"
           :value="child"
           :persons="childrens"
           @change="(child) => setChildForm(child, index)"
@@ -164,7 +164,7 @@
           </div>
         </div>
         <WeddingForm
-          :id="'wedding-' + index"
+          :id="'weddings-' + index"
           :value="wedding"
           :persons="partners"
           @change="(wedding) => setWeddingForm(wedding, index)"
@@ -206,7 +206,7 @@
           </div>
         </div>
         <MilitaryForm
-          :id="'military-' + index"
+          :id="'militaries-' + index"
           :value="military"
           @change="(military) => setMilitaryForm(military, index)"
         />
@@ -247,7 +247,7 @@
           </div>
         </div>
         <EducationForm
-          :id="'education-' + index"
+          :id="'educations-' + index"
           :value="education"
           @change="(education) => setEducationForm(education, index)"
         />
@@ -288,7 +288,7 @@
           </div>
         </div>
         <WorkForm
-          :id="'work-' + index"
+          :id="'works-' + index"
           :value="work"
           @change="(work) => setWorkForm(work, index)"
         />

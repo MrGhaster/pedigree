@@ -1,6 +1,6 @@
 <template>
   <PageLayout>
-    <ScrollingPanel :sections="sections" ref="scrollingPanelRef" />
+    <ScrollingPanel :sections="sections" />
     <NavigationPanel />
     <section class="p-16">
       <PersonCard :person="person" />
@@ -47,13 +47,7 @@ export default {
         return this.getPersonById(this.id)
       }
       return emptyPerson()
-    },
-    scrollingPanel() {
-      return this.$refs.scrollingPanelRef
     }
-  },
-  mounted() {
-    this.addSubField(this.scrollingPanel)
   },
   methods: {
     generateSubFieldId(sectionName, index) {
@@ -67,16 +61,6 @@ export default {
         }))
       }
       return []
-    },
-    addSubField(scrollingPanel) {
-      this.sections.forEach(section => {
-        const subField = this.subField[section.id]
-        if (subField && subField.length > 0) {
-          subField.forEach(subField => {
-            scrollingPanel.addSubField(section.id, subField)
-          })
-        }
-      })
     }
   }
 }

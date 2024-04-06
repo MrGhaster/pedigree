@@ -61,7 +61,7 @@
           v-for="(education, index) in person.educations"
           :key="index"
           :education="education"
-          :id="'education-' + index"
+          :id="'educations-' + index"
         />
       </div>
       <div v-else class="person-card__information-text">
@@ -74,7 +74,7 @@
           v-for="(wedding, index) in person.weddings"
           :key="index"
           :wedding="wedding"
-          :id="'wedding-' + index"
+          :id="'weddings-' + index"
         />
       </div>
       <div v-else class="person-card__information-text">
@@ -87,7 +87,7 @@
           v-for="(military, index) in person.militaries"
           :key="index"
           :military="military"
-          :id="'military-' + index"
+          :id="'militaries-' + index"
         />
       </div>
       <div v-else class="person-card__information-text">
@@ -100,7 +100,7 @@
           v-for="(work, index) in person.works"
           :key="index"
           :work="work"
-          :id="'work-' + index"
+          :id="'works-' + index"
         />
       </div>
       <div v-else class="person-card__information-text">

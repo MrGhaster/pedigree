@@ -1,6 +1,6 @@
 <template>
   <PageLayout>
-    <ScrollingPanel :sections="sections" ref="scrollingPanelRef" />
+    <ScrollingPanel :sections="sections" />
     <section class="p-16">
       <PersonForm v-model="form" />
       <SimpleButton 
@@ -65,9 +65,6 @@ export default {
         { id: 'education-section', title: 'Образование', subField: this.generateSubField('educations') },
         { id: 'work-section', title: 'Работа', subField: this.generateSubField('works') }
       ]
-    },
-    scrollingPanel() {
-      return this.$refs.scrollingPanelRef
     }
   },
   mounted () {
