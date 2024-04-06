@@ -1,5 +1,6 @@
 <template>
   <PageLayout>
+    <ScrollingPanel :sections="sections" ref="scrollingPanelRef" />
     <section class="p-16">
       <PersonForm v-model="form" />
       <SimpleButton 
@@ -26,13 +27,15 @@ import PageLayout from '@/components/parts/PageLayout.vue'
 import PersonForm from '@/components/forms/PersonForm.vue'
 import { emptyPerson } from '@/services/person'
 import SimpleButton from '@/components/ui/SimpleButton.vue'
+import ScrollingPanel from '@/components/ui/ScrollingPanel.vue'
 
 export default {
   name: 'EditPersonPage',
   components: {
     PageLayout,
     PersonForm,
-    SimpleButton
+    SimpleButton,
+    ScrollingPanel
   },
   data () {
     return {
@@ -51,6 +54,20 @@ export default {
     },
     person () {
       return this.getPersonById(this.id)
+    },
+    sections () {
+      return [
+        { id: 'info-section', title: 'Общая информация', subField: this.generateSubField('info')},
+        { id: 'parents-section', title: 'Родители', subField: this.generateSubField('parents') },
+        { id: 'childs-section', title: 'Дети', subField: this.generateSubField('childs') },
+        { id: 'weddings-section', title: 'Брачные союзы', subField: this.generateSubField('weddings') },
+        { id: 'military-section', title: 'Военная служба', subField: this.generateSubField('militaries') },
+        { id: 'education-section', title: 'Образование', subField: this.generateSubField('educations') },
+        { id: 'work-section', title: 'Работа', subField: this.generateSubField('works') }
+      ]
+    },
+    scrollingPanel() {
+      return this.$refs.scrollingPanelRef
     }
   },
   mounted () {
@@ -80,6 +97,18 @@ export default {
     },
     goBack () {
       this.$router.go(-1)
+    },
+    generateSubFieldId(sectionName, index) {
+      return `${sectionName}-${index}`
+    },
+    generateSubField(sectionName) {
+      if (this.person[sectionName]) {
+        return this.person[sectionName].map((item, index) => ({
+          id: this.generateSubFieldId(sectionName, index),
+          title: `${sectionName.charAt(0).toUpperCase() + sectionName.slice(1)} ${index + 1}`
+        }))
+      }
+      return []
     }
   }
 }

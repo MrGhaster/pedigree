@@ -24,71 +24,49 @@ export default {
     NavigationPanel,
     ScrollingPanel
   },
-  data() {
-    return {
-      sections: [
-        { id: 'info-section', title: 'Общая информация'},
-        { id: 'parents-section', title: 'Родители', subField: []},
-        { id: 'children-section', title: 'Дети', subField: []},
-        { id: 'weddings-section', title: 'Брачные союзы', subField: []},
-        { id: 'military-section', title: 'Военная служба', subField: []},
-        { id: 'education-section', title: 'Образование', subField: []},
-        { id: 'work-section', title: 'Работа', subField: []}
-      ]
-    }
-  },
   computed: {
     ...mapGetters('persons', [
       'getPersonById'
     ]),
+    sections () {
+      return [
+        { id: 'info-section', title: 'Общая информация', subField: this.generateSubField('info')},
+        { id: 'parents-section', title: 'Родители', subField: this.generateSubField('parents') },
+        { id: 'childs-section', title: 'Дети', subField: this.generateSubField('childs') },
+        { id: 'weddings-section', title: 'Брачные союзы', subField: this.generateSubField('weddings') },
+        { id: 'military-section', title: 'Военная служба', subField: this.generateSubField('militaries') },
+        { id: 'education-section', title: 'Образование', subField: this.generateSubField('educations') },
+        { id: 'work-section', title: 'Работа', subField: this.generateSubField('works') }
+      ]
+    },
+    id () {
+      return this.$route.params.id
+    },
     person () {
       if (this.getPersonById(this.id)) {
         return this.getPersonById(this.id)
       }
       return emptyPerson()
     },
-    id () {
-      return this.$route.params.id
-    },
-    subField () {
-      return {
-        "parents-section": this.person.parents ? this.person.parents.map((parent, index) => ({
-          id: this.generateSubFieldId("parent", index),
-          title: `Родитель ${index + 1}`
-        })): [],
-        "children-section": this.person.children ? this.person.children.map((child, index) => ({
-          id: this.generateSubFieldId("child", index),
-          title: `Ребёнок ${index + 1}`
-        })): [],
-        "weddings-section": this.person.weddings ?this.person.weddings.map((wedding, index) => ({
-          id: this.generateSubFieldId("wedding", index),
-          title: `Брачный союз ${index + 1}`
-        })): [],
-        "military-section": this.person.militaries ? this.person.militaries.map((military, index) => ({
-          id: this.generateSubFieldId("military", index),
-          title: `Военная служба ${index + 1}`
-        })): [],
-        "education-section": this.person.educations ? this.person.educations.map((education, index) => ({
-          id: this.generateSubFieldId("education", index),
-          title: `Образование ${index + 1}`
-        })): [],
-        "work-section": this.person.works ? this.person.works.map((work, index) => ({
-          id: this.generateSubFieldId("work", index),
-          title: `Работа ${index + 1}`
-        })): []
-      }
-    },
     scrollingPanel() {
       return this.$refs.scrollingPanelRef
     }
   },
   mounted() {
-    const scrollingPanel = this.scrollingPanel
-    this.addSubField(scrollingPanel)
+    this.addSubField(this.scrollingPanel)
   },
   methods: {
     generateSubFieldId(sectionName, index) {
       return `${sectionName}-${index}`
+    },
+    generateSubField(sectionName) {
+      if (this.person[sectionName]) {
+        return this.person[sectionName].map((item, index) => ({
+          id: this.generateSubFieldId(sectionName, index),
+          title: `${sectionName.charAt(0).toUpperCase() + sectionName.slice(1)} ${index + 1}`
+        }))
+      }
+      return []
     },
     addSubField(scrollingPanel) {
       this.sections.forEach(section => {

@@ -3,7 +3,7 @@
     <div v-for="(section, index) in sections" :key="index">
       <button class="scrolling-menu__btn" @click="() => scrollToSection(section.id)">{{ section.title }}</button>
       <div v-for="(subField, index) in section.subField" :key="index">
-        <div class="scrolling-menu__sub_field" @click="() => scrollToSection(subField.id)">{{subField.title}}</div>
+        <button class="scrolling-menu__sub_field" @click="() => scrollToSection(subField.id)">{{ subField.title }}</button>
       </div>
     </div>
   </div>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'ScrollingForm',
+  name: 'ScrollingPanel',
   props: {
     sections: {
       type: Array,

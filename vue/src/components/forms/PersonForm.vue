@@ -94,7 +94,7 @@
 
 
     <div class="custom-form__full-width">
-      <h2>Дети</h2>
+      <h2 id="childs-section">Дети</h2>
       <div
         v-for="(child, index) in value.children"
         :key="'child' + index"
@@ -122,6 +122,7 @@
           </div>
         </div>
         <ChildForm
+          :id="'child-' + index"
           :value="child"
           :persons="childrens"
           @change="(child) => setChildForm(child, index)"
@@ -135,7 +136,7 @@
     </div>
 
     <div class="custom-form__full-width">
-      <h2>Брачные союзы</h2>
+      <h2 id="weddings-section">Брачные союзы</h2>
       <div
         v-for="(wedding, index) in value.weddings"
         :key="'wedding' + index"
@@ -163,6 +164,7 @@
           </div>
         </div>
         <WeddingForm
+          :id="'wedding-' + index"
           :value="wedding"
           :persons="partners"
           @change="(wedding) => setWeddingForm(wedding, index)"
@@ -176,7 +178,7 @@
     </div>
 
     <div class="custom-form__full-width">
-      <h2>Военная служба</h2>
+      <h2 id="military-section">Военная служба</h2>
       <div
         v-for="(military, index) in value.militaries"
         :key="'military' + index"
@@ -204,6 +206,7 @@
           </div>
         </div>
         <MilitaryForm
+          :id="'military-' + index"
           :value="military"
           @change="(military) => setMilitaryForm(military, index)"
         />
@@ -216,7 +219,7 @@
     </div>
 
     <div class="custom-form__full-width">
-      <h2>Образование</h2>
+      <h2 id="education-section">Образование</h2>
       <div
         v-for="(education, index) in value.educations"
         :key="'education' + index"
@@ -244,6 +247,7 @@
           </div>
         </div>
         <EducationForm
+          :id="'education-' + index"
           :value="education"
           @change="(education) => setEducationForm(education, index)"
         />
@@ -256,14 +260,14 @@
     </div>
 
     <div class="custom-form__full-width">
-      <h2>Работа</h2>
+      <h2 id="work-section">Работа</h2>
       <div
         v-for="(work, index) in value.works"
         :key="'work' + index"
       >
         <div class="person-page__header-wrapper">
           <h3>Работа {{ index + 1 }}</h3>
-          <div class="person-page__buttons-wrapper">
+          <div class="person-page__buttons-wrapper"> 
             <button 
               v-show="index !== 0"
               class="person-page__button" 
@@ -284,6 +288,7 @@
           </div>
         </div>
         <WorkForm
+          :id="'work-' + index"
           :value="work"
           @change="(work) => setWorkForm(work, index)"
         />
