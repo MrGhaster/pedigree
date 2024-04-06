@@ -122,6 +122,7 @@
           </div>
         </div>
         <ChildForm
+          ref="childForm"
           :id="'childs-' + index"
           :value="child"
           :persons="childrens"
@@ -164,6 +165,7 @@
           </div>
         </div>
         <WeddingForm
+          ref="weddingForm"
           :id="'weddings-' + index"
           :value="wedding"
           :persons="partners"
@@ -206,6 +208,7 @@
           </div>
         </div>
         <MilitaryForm
+          ref="militaryForm"
           :id="'militaries-' + index"
           :value="military"
           @change="(military) => setMilitaryForm(military, index)"
@@ -247,6 +250,7 @@
           </div>
         </div>
         <EducationForm
+          ref="educationForm"
           :id="'educations-' + index"
           :value="education"
           @change="(education) => setEducationForm(education, index)"
@@ -288,6 +292,7 @@
           </div>
         </div>
         <WorkForm
+          ref="workForm"
           :id="'works-' + index"
           :value="work"
           @change="(work) => setWorkForm(work, index)"
@@ -495,6 +500,32 @@ export default {
         ...param
       })
     },
+    checkEmptyForms() {
+      const militaryForm = this.$refs.militaryForm || [];
+      const educationForm = this.$refs.educationForm || [];
+      const childForm = this.$refs.childForm || [];
+      const weddingForm = this.$refs.weddingForm || [];
+      const workForm = this.$refs.workForm || [];
+      const forms = [
+        ...militaryForm,
+        ...educationForm,
+        ...childForm,
+        ...weddingForm,
+        ...workForm
+      ]
+      let result = false
+      forms.forEach(i => {
+        const r = i.validate()
+        if (r) {
+          result = true
+          this.$notify({
+            message: 'Ошибка: ' + r,
+            type: 'error'
+          })
+        }
+      })
+      return result
+    },   
     formatDate (date) {
       if (date) {
         const getYear = parseInt(date.slice(6, 10))

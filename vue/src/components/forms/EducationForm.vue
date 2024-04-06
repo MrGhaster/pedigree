@@ -160,6 +160,12 @@ export default {
     },
     selectHint (hint) {
       this.type = hint
+    },
+    validate () {
+      if (!this.type && !this.level && !this.startDate && !this.endDate && !this.name && !this.city) {
+        return 'Необходимо заполнить все поля формы образования.';
+      }
+      return null;
     }
   }
 }

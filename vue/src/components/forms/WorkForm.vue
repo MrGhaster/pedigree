@@ -141,6 +141,12 @@ export default {
         ...this.value,
         ...param
       })
+    },
+    validate () {
+      if (!this.place && !this.organization && !this.startDate && !this.endDate && !this.position && !this.description) {
+        return 'Необходимо заполнить все поля формы работы.';
+      }
+      return null;
     }
   }
 }
