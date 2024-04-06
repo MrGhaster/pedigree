@@ -60,8 +60,8 @@ export default {
     ]),
     createPerson() {
       const isEmpty = this.$refs.personForm.checkEmptyForms();
-      if (!isEmpty) {
-        return;
+      if (isEmpty) {
+        return
       }
       const parentId = this.parentId
       this.addPerson(this.form).then((person) => {
